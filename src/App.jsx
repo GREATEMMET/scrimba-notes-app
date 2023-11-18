@@ -12,7 +12,6 @@ function App() {
     (notes[0] && notes[0].id) || ""
   );
 
-
   //Function to create new notes and add then to the beginning of the array
   function createNewNote() {
     const newNote = {
@@ -22,6 +21,20 @@ function App() {
     setNotes((prevNotes) => [newNote, ...prevNotes]); //newNotes comes first in the array
     setCurrentNodeId(newNote.id); //Sets currrentNodeId to the nanoid id of the new note
   }
+
+  //Function to uodate note
+  function updateNote(text) {
+    // Map through the the notes array and check if the note id is equal to the currentNoteId. If so change the the content of the body with the "text" parameter
+    setNotes((oldNotes) =>
+      oldNotes.map((oldNote) => {
+        return oldNote.id === currentNoteId
+          ? { ...oldNote, body: text }
+          : oldNote;
+      })
+    );
+  }
+
+  
 
   return (
     <div>
