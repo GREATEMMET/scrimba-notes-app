@@ -34,7 +34,11 @@ function App() {
     );
   }
 
-  
+
+  //Functiion to find note
+  function findCurrentNote() {
+    return notes.find((note) => note.id === currentNoteId) || notes[0];
+  }
 
   return (
     <div>
