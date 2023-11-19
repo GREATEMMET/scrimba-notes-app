@@ -3,6 +3,7 @@ import React from "react";
 import Sidebar from "./components/Sidebar";
 import Editor from "./components/Editor";
 import { nanoid } from "nanoid";
+import Split from "react-split";
 
 function App() {
   //Initialize the Notes array
@@ -34,16 +35,34 @@ function App() {
     );
   }
 
-
-  //Functiion to find note
+  //Functiion to find note. Returns the note that matches the condition.
   function findCurrentNote() {
     return notes.find((note) => note.id === currentNoteId) || notes[0];
   }
 
   return (
-    <div>
-      <h1>App</h1>
-    </div>
+    <main>
+      {notes.length > 0 ? (
+        <Split sizes={[30, 75]} direction="horizontal" className="split">
+          <Sidebar
+            notes={notes}
+            currentNote={findCurrentNote()}
+            setCurrentNodeId={setCurrentNodeId}
+            newNote={createNewNote}
+          />
+          {currentNoteId && notes.length > 0 && (
+            <Editor currentNote={findCurrentNote} updateNote={updateNote} />
+          )}
+        </Split>
+      ) : (
+        <div className="noNotes">
+          <h1>You have no notes</h1>
+          <button className="firstNote" onClick={createNewNote}>
+            Create one now
+          </button>
+        </div>
+      )}
+    </main>
   );
 }
 
