@@ -9,7 +9,7 @@ function App() {
   //Initialize the Notes array
   const [notes, setNotes] = React.useState([]);
   // Set a current note id to point to the most recent note
-  const [currentNoteId, setCurrentNodeId] = React.useState(
+  const [currentNoteId, setCurrentNoteId] = React.useState(
     (notes[0] && notes[0].id) || ""
   );
 
@@ -20,7 +20,7 @@ function App() {
       body: "# Type your markdown note's title here",
     };
     setNotes((prevNotes) => [newNote, ...prevNotes]); //newNotes comes first in the array
-    setCurrentNodeId(newNote.id); //Sets currrentNodeId to the nanoid id of the new note
+    setCurrentNoteId(newNote.id); //Sets currrentNodeId to the nanoid id of the new note
   }
 
   //Function to uodate note
@@ -47,7 +47,7 @@ function App() {
           <Sidebar
             notes={notes}
             currentNote={findCurrentNote()}
-            setCurrentNodeId={setCurrentNodeId}
+            setCurrentNoteId={setCurrentNoteId}
             newNote={createNewNote}
           />
           {currentNoteId && notes.length > 0 && (
