@@ -23,7 +23,7 @@ export default function Sidebar(props) {
           +
         </button>
       </div>
-      {noteElements}
+      <div className={s.note}>{noteElements}</div>
     </section>
   );
 }
