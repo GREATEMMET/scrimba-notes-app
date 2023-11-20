@@ -21,8 +21,9 @@ export default function Editor(props) {
         selectedTab={selectedTab} // The currently selected tab.
         onTabChange={setSelectedTab} // Function called when the selected tab changes.
         generateMarkdownPreview={(markdoown) =>
+          // Function that should return a Promise to the generated HTML or a React element for the preview
           Promise.resolve(converter.makeHtml(markdoown))
-        } // Function that should return a Promise to the generated HTML or a React element for the preview
+        } 
         // minEditorHeight={}
         // minPreviewHeight={}
         heightUnits="vh"
