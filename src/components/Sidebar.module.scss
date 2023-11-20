@@ -1,4 +1,4 @@
-@use '../variables' as v;
+@use "../variables" as v;
 
 .pane {
   height: 100vh;
@@ -14,9 +14,8 @@
   padding: 20px;
   border-bottom: 0.5px solid v.$accent;
   font-size: 30px;
-  
 
-  .newNote{
+  .newNote {
     padding: 10px;
     background-color: v.$accent;
     border: none;
@@ -25,14 +24,19 @@
     border-radius: 5px;
   }
 }
+
 .note {
   overflow-y: scroll;
-  height:calc(100vh - 150px);
+  height: calc(100vh - 150px);
 }
+
 .title {
   background-color: v.$white;
   height: 100px;
   line-height: 100px;
   padding-left: 10px;
+}
 
+.selectedNote {
+  background-color: v.$accent;
 }
