@@ -1,8 +1,8 @@
-*{
-    box-sizing: border-box;
-    text-decoration: none;
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
 }
 
 .split {
@@ -10,19 +10,26 @@
 }
 
 .gutter {
-  background-color: grey;
+  background-color: rgb(205, 205, 205);
   background-repeat: no-repeat;
   background-position: 50%;
 }
 
 .gutter.gutter-horizontal {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==");
-  /* min-height: 100%; */
   cursor: col-resize;
 }
 
 .gutter.gutter-horizontal:hover {
   cursor: col-resize;
+}
+
+/* Editor view height */
+.mde-text {
+  height: calc(100vh - 43px) !important;
+}
+.mde-preview {
+  min-height: calc(100vh - 43px) !important;
 }
 
 .noNotes {
