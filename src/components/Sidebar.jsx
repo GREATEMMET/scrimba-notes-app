@@ -1,11 +1,12 @@
 import React from "react";
+import s from "./Sidebar.module.scss";
 
 export default function Sidebar(props) {
   const noteElements = props.notes.map((note, index) => (
     <div key={note.id}>
       <div
-        className={`title ${
-          note.id === props.currentNote.id ? "selectedNote" : ""
+        className={`${s.title} ${
+          note.id === props.currentNote.id ? s.selectedNote : ""
         }`}
         onClick={props.setCurrentNoteId(note.id)}
       >
@@ -15,10 +16,10 @@ export default function Sidebar(props) {
   ));
 
   return (
-    <section className="pane sidebar">
-      <div className="sidebarHeader">
+    <section className={`${s.pane} ${s.sidebar}`}>
+      <div className={s.sidebarHeader}>
         <h1>Notes</h1>
-        <button className="newNote" onClick={props.newNote}>
+        <button className={s.newNote} onClick={props.newNote}>
           +
         </button>
       </div>
