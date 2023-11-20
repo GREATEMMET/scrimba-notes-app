@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import React from "react";
 import Sidebar from "./components/Sidebar";
 import Editor from "./components/Editor";
@@ -51,7 +51,7 @@ function App() {
             newNote={createNewNote}
           />
           {currentNoteId && notes.length > 0 && (
-            <Editor currentNote={findCurrentNote} updateNote={updateNote} />
+            <Editor currentNote={findCurrentNote()} updateNote={updateNote} />
           )}
         </Split>
       ) : (
