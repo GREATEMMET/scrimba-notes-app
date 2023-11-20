@@ -23,8 +23,8 @@ export default function Editor(props) {
         generateMarkdownPreview={(markdoown) =>
           Promise.resolve(converter.makeHtml(markdoown))
         } // Function that should return a Promise to the generated HTML or a React element for the preview
-        minEditorHeight={100}
-        minPreviewHeight={100}
+        // minEditorHeight={}
+        // minPreviewHeight={}
         heightUnits="vh"
       />
     </section>
