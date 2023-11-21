@@ -7,11 +7,17 @@ import Split from "react-split";
 
 function App() {
   //Initialize the Notes array
-  const [notes, setNotes] = React.useState([]);
+  const [notes, setNotes] = React.useState(
+    JSON.parse(localStorage.getItem("notes")) || []
+  );
   // Set a current note id to point to the most recent note
   const [currentNoteId, setCurrentNoteId] = React.useState(
     (notes[0] && notes[0].id) || ""
   );
+
+  React.useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
 
   //Function to create new notes and add then to the beginning of the array
   function createNewNote() {
