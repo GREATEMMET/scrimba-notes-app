@@ -26,6 +26,8 @@ export default function Sidebar(props) {
         </button>
       </div>
       <div className={s.note}>{noteElements}</div>
+
+      
     </section>
   );
 }
