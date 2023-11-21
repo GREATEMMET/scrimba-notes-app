@@ -8,6 +8,7 @@ import Split from "react-split";
 function App() {
   //Initialize the Notes array
   const [notes, setNotes] = React.useState(
+    //Get notes from local storage. Data is in JSON format. Parse to convert to javascript
     JSON.parse(localStorage.getItem("notes")) || []
   );
   // Set a current note id to point to the most recent note
@@ -16,6 +17,7 @@ function App() {
   );
 
   React.useEffect(() => {
+    //save notes to local storage.. value should be in json string format hence, stringify
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
