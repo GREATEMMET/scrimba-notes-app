@@ -8,8 +8,9 @@ import Split from "react-split";
 function App() {
   //Initialize the Notes array
   const [notes, setNotes] = React.useState(
-    //Get notes from local storage. Data is in JSON format. Parse to convert to javascript
-    JSON.parse(localStorage.getItem("notes")) || []
+    // Get notes from local storage. Data is in JSON format. Parse to convert to javascript
+    // lazy state initialization with arrow function to prevent requsting data from local storage on each render
+    () => JSON.parse(localStorage.getItem("notes")) || []
   );
   // Set a current note id to point to the most recent note
   const [currentNoteId, setCurrentNoteId] = React.useState(
@@ -17,21 +18,22 @@ function App() {
   );
 
   React.useEffect(() => {
-    //save notes to local storage.. value should be in json string format hence, stringify
+    // save notes to local storage..
+    // value should be in json string format hence, stringify
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
   //Function to create new notes and add then to the beginning of the array
   function createNewNote() {
     const newNote = {
-      id: nanoid(), //Sets the id to use the nanoid dependency which generates id automatically
+      id: nanoid(), // Sets the id to use the nanoid dependency which generates id automatically
       body: "# Type your markdown note's title here",
     };
-    setNotes((prevNotes) => [newNote, ...prevNotes]); //newNotes comes first in the array
-    setCurrentNoteId(newNote.id); //Sets currrentNodeId to the nanoid id of the new note
+    setNotes((prevNotes) => [newNote, ...prevNotes]); // newNotes comes first in the array
+    setCurrentNoteId(newNote.id); // Sets currrentNodeId to the nanoid id of the new note
   }
 
-  //Function to uodate note
+  // Function to uodate note
   function updateNote(text) {
     // Map through the the notes array and check if the note id is equal to the currentNoteId. If so change the the content of the body with the "text" parameter
     setNotes((oldNotes) =>
@@ -43,7 +45,7 @@ function App() {
     );
   }
 
-  //Functiion to find note. Returns the note that matches the condition.
+  // Functiion to find note. Returns the note that matches the condition.
   function findCurrentNote() {
     return notes.find((note) => note.id === currentNoteId) || notes[0];
   }
