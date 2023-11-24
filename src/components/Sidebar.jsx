@@ -11,6 +11,7 @@ export default function Sidebar(props) {
         onClick={() => props.setCurrentNoteId(note.id)}
       >
         <h4>{note.body.split("\n")[0] || "Empty Note"}</h4>
+        {/* The h4 renders the heading of the note as the title of the page.. If no heading, the title is Empty Note */}
       </div>
     </div>
   ));
