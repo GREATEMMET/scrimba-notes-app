@@ -8,14 +8,12 @@ export default function Sidebar(props) {
         className={`${s.title} ${
           note.id === props.currentNote.id ? s.selectedNote : ""
         }`}
-        onClick={()=>props.setCurrentNoteId(note.id)}
+        onClick={() => props.setCurrentNoteId(note.id)}
       >
-        <h4>Note {index + 1}</h4>
+        <h4>{note.body.split("\n")[0] || "Empty Note"}</h4>
       </div>
     </div>
   ));
-
-
 
   return (
     <section className={`${s.pane} ${s.sidebar}`}>
@@ -26,9 +24,6 @@ export default function Sidebar(props) {
         </button>
       </div>
       <div className={s.note}>{noteElements}</div>
-
-      
     </section>
   );
 }
-
