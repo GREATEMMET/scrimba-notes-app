@@ -33,16 +33,35 @@ function App() {
     setCurrentNoteId(newNote.id); // Sets currrentNodeId to the nanoid id of the new note
   }
 
-  // Function to uodate note
+  // Function to update note
   function updateNote(text) {
-    // Map through the the notes array and check if the note id is equal to the currentNoteId. If so change the the content of the body with the "text" parameter
-    setNotes((oldNotes) =>
-      oldNotes.map((oldNote) => {
-        return oldNote.id === currentNoteId
-          ? { ...oldNote, body: text }
-          : oldNote;
-      })
-    );
+    /*
+    Map through the the notes array and check if the note id is equal to the currentNoteId. If so, change the the content of the body with the "text" parameter
+    */
+
+    /* Also, we Filter all notes that are not the current note and save the current note to a variable "updatedNote". This helps us remove the updatedNote from the array and add it to the beginning of the array. The purpose of this is so that whenever an edit is made, the current note moves the top of the list.
+     */
+
+    setNotes((oldNotes) => {
+      let updatedNote;
+
+      const mappedFilteredNote = oldNotes
+        .map((oldNote) =>
+          oldNote.id === currentNoteId ? { ...oldNote, body: text } : oldNote
+        )
+        .filter((note) => {
+          if (note.id !== currentNoteId) {
+            return true;
+          } else {
+            updatedNote = note;
+            return false;
+          }
+        });
+
+      mappedFilteredNote.unshift(updatedNote);
+      const rearrangedNote = mappedFilteredNote;
+      return rearrangedNote;
+    });
   }
 
   // Functiion to find note. Returns the note that matches the condition.
@@ -70,7 +89,7 @@ function App() {
           <button className="firstNote" onClick={createNewNote}>
             Create one now
           </button>
-        </div>
+        </div> 
       )}
     </main>
   );
